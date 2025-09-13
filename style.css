@@ -1,0 +1,182 @@
+/* This file should be located in your _coinidx/ folder */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+#coin-collection {
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.denomination-heading {
+    text-align: center;
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.commemorative-separator {
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 20px 0;
+    box-sizing: border-box;
+}
+
+/* Coin Grid Section Styles */
+.coin-grid-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between cards */
+    justify-content: flex-start; /* CRITICAL: Aligns cards to the left within the row */
+    width: 100%; /* Allows the grid to take full available width up to max-width */
+    /*max-width: 1200px;  Limits the maximum width of the entire grid section */
+    margin: 0 auto; /* Centers the entire grid section if its width is less than 100% */
+    padding: 20px 0;
+}
+
+
+.coin-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out;
+    max-width: 150px;
+    width: 100%;
+}
+
+.coin-card:hover {
+    transform: translateY(-5px);
+    /* cursor: pointer; - Removed from card hover, now on image */
+}
+
+.coin-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #0056b3;
+    font-size: 1.2em;
+}
+
+.coin-images {
+    display: flex;
+ /*   justify-content: space-around; */ /* Changed to center if only one image */
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    align-items: center;
+    overflow: hidden;
+    min-height: 150px; /* Ensure container has height even if image fails to load */
+}
+
+.coin-images img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    max-width: 100%;
+    height: auto; 
+    cursor: pointer; /* Indicate image is clickable */
+    /* --- NEW: Add transition for smoother image swap --- */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+}
+
+.coin-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.coin-details strong {
+    color: #555;
+}
+
+.coin-collection-name {
+    font-size: 0.88em;
+    color: #007bff;
+    font-style: italic;
+    margin: 3px 0;
+}
+
+.coin-description {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 0.85em;
+    word-wrap: break-word; 
+}
+
+@media (max-width: 600px) {
+    .coin-grid-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+    .coin-images img {
+        max-width: 180px;
+        height: auto;
+        width: auto;
+    }
+}
+
+/* --- Lightbox/Modal Styles --- */
+#lightbox-overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#lightbox-content {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: default;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    object-fit: contain;
+}
